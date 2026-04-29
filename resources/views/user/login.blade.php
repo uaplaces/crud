@@ -40,7 +40,7 @@
             <p class="mt-3 mb-3 text-muted">
                 v.2022.04
                 <i class="bi bi-git mx-3"></i>
-                <a href="https://github.com/vadym-shcherbyna/crud" target="_blank" class="text-secondary">
+                <a href="https://github.com/uaplaces/crud" target="_blank" class="text-secondary">
                     GitHub Repo</a>
             </p>
 
