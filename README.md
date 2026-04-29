@@ -32,7 +32,7 @@ Add, edit, delete items. Filters, sorting, pagination and num rows control. Moda
 
   cd /var/www/[your-path]
 
-  git clone https://github.com/vadym-shcherbyna/crud -b master
+  git clone https://github.com/uaplaces/crud -b master
 
   ### Vendor
 
@@ -66,7 +66,7 @@ Add, edit, delete items. Filters, sorting, pagination and num rows control. Moda
 
   ## Demo
 
-    site: http://crud.devhints.net
+    site: https://crud.bentega.top
     login: admin@admin.com
     password: admin@admin.com
     
