@@ -1,2 +1,7 @@
 import "bootstrap";
-require('./bootstrap');
+
+import.meta.glob([
+    '/resources/images/**',
+]);
+
+import './admin/items';

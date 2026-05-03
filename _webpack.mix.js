@@ -13,6 +13,10 @@ mix.sass('resources/sass/admin/general.scss', 'public/css/admin')
 mix.copy('resources/images', 'public/images')
 mix.copy('resources/images/logo.svg', 'public/favicon.svg')
 
+mix.options({
+    progress: false
+});
+
 const config = {
     //
 }

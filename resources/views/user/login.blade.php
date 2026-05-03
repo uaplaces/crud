@@ -5,8 +5,7 @@
         <form action="{{ route('user.auth') }}" method="POST" enctype="multipart/form-data">
 
             @csrf
-
-            <img class="mb-1" src="{{ asset('images/logo.svg') }}" alt="" width="72" height="72">
+            <img class="mb-1" src="{{ Vite::asset('resources/images/logo.svg') }}" alt="" width="72" height="72">
 
             <h1 class="h3 mb-3 fw-normal">@lang($route . '.H1')</h1>
 
@@ -50,6 +49,6 @@
 
 @endsection
 @push('styles')
-    <link href="{{ asset('css/user/login.css') }}" rel="stylesheet" />
+    <link href="{{ Vite::asset('resources/css/user/login.scss') }}" rel="stylesheet" />
 @endpush
 

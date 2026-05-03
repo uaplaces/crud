@@ -1,0 +1,43 @@
+{
+  "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff": {
+    "file": "assets/bootstrap-icons-f55513b7.woff",
+    "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff"
+  },
+  "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2": {
+    "file": "assets/bootstrap-icons-6c757103.woff2",
+    "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2"
+  },
+  "resources/css/admin/general.scss": {
+    "file": "assets/general-612b7ffa.css",
+    "isEntry": true,
+    "src": "resources/css/admin/general.scss"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-0378578a.css",
+    "isEntry": true,
+    "src": "resources/css/app.css"
+  },
+  "resources/css/user/login.scss": {
+    "file": "assets/login-09a01fef.css",
+    "isEntry": true,
+    "src": "resources/css/user/login.scss"
+  },
+  "resources/images/favicon.svg": {
+    "file": "assets/favicon-cf97be26.svg",
+    "src": "resources/images/favicon.svg"
+  },
+  "resources/images/logo.svg": {
+    "file": "assets/logo-158fe44b.svg",
+    "src": "resources/images/logo.svg"
+  },
+  "resources/js/admin/items.js": {
+    "file": "assets/items-0487abe4.js",
+    "isEntry": true,
+    "src": "resources/js/admin/items.js"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-b487b824.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  }
+}

@@ -1,5 +1,6 @@
 <template>
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 
         <h1 class="h2"><i class="bi bi-list-check me-3"></i> Items</h1>
 
@@ -53,31 +54,37 @@
             <tr>
                 <th class="text-center">#</th>
                 <th>
-                    <span  class="cursor-pointer" v-on:click="sorting('created_at')">
+                    <span class="cursor-pointer" v-on:click="sorting('created_at')">
                         Created At
-                        <SortUp v-bind:sort_attr="sort_attr" v-bind:sort_dir="sort_dir" current_attr="created_at"></SortUp>
-                        <SortDown v-bind:sort_attr="sort_attr" v-bind:sort_dir="sort_dir" current_attr="created_at"></SortDown>
+                        <SortUp v-bind:sort_attr="sort_attr" v-bind:sort_dir="sort_dir"
+                                current_attr="created_at"></SortUp>
+                        <SortDown v-bind:sort_attr="sort_attr" v-bind:sort_dir="sort_dir"
+                                  current_attr="created_at"></SortDown>
                     </span>
                 </th>
                 <th>
-                    <span  class="cursor-pointer" v-on:click="sorting('name')">
+                    <span class="cursor-pointer" v-on:click="sorting('name')">
                         Name
                         <SortUp v-bind:sort_attr="sort_attr" v-bind:sort_dir="sort_dir" current_attr="name"></SortUp>
-                        <SortDown v-bind:sort_attr="sort_attr" v-bind:sort_dir="sort_dir" current_attr="name"></SortDown>
+                        <SortDown v-bind:sort_attr="sort_attr" v-bind:sort_dir="sort_dir"
+                                  current_attr="name"></SortDown>
                     </span>
                 </th>
                 <th>
-                    <span  class="cursor-pointer" v-on:click="sorting('category')">
+                    <span class="cursor-pointer" v-on:click="sorting('category')">
                         Category
-                        <SortUp v-bind:sort_attr="sort_attr" v-bind:sort_dir="sort_dir" current_attr="category"></SortUp>
-                        <SortDown v-bind:sort_attr="sort_attr" v-bind:sort_dir="sort_dir" current_attr="category"></SortDown>
+                        <SortUp v-bind:sort_attr="sort_attr" v-bind:sort_dir="sort_dir"
+                                current_attr="category"></SortUp>
+                        <SortDown v-bind:sort_attr="sort_attr" v-bind:sort_dir="sort_dir"
+                                  current_attr="category"></SortDown>
                     </span>
                 </th>
                 <th>
-                    <span  class="cursor-pointer" v-on:click="sorting('address')">
+                    <span class="cursor-pointer" v-on:click="sorting('address')">
                         Address
                         <SortUp v-bind:sort_attr="sort_attr" v-bind:sort_dir="sort_dir" current_attr="address"></SortUp>
-                        <SortDown v-bind:sort_attr="sort_attr" v-bind:sort_dir="sort_dir" current_attr="address"></SortDown>
+                        <SortDown v-bind:sort_attr="sort_attr" v-bind:sort_dir="sort_dir"
+                                  current_attr="address"></SortDown>
                     </span>
                 </th>
                 <td class="text-center">Activity</td>
@@ -99,13 +106,13 @@
                 <td>{{ item.address }}</td>
                 <td class="text-center">
                     <i class="bi bi-check-square-fill text-secondary cursor-pointer"
-                       v-if="item.is_active == 1" v-on:click="activityItem(item.id, 0)"></i>
+                       v-if="item.is_active === 1" v-on:click="activityItem(item.id, 0)"></i>
                     <i class="bi bi-square text-secondary cursor-pointer"
-                       v-if="item.is_active == 0" v-on:click="activityItem(item.id, 1)"></i>
+                       v-if="item.is_active === 0" v-on:click="activityItem(item.id, 1)"></i>
                 </td>
                 <td class="text-center">
 
-                    <TooltipSlot v-bind:info="item.notice"  v-if="item.notice !== null"></TooltipSlot>
+                    <TooltipSlot v-bind:info="item.notice" v-if="item.notice !== null"></TooltipSlot>
 
                 </td>
                 <td><i class="bi bi-pencil-square text-success cursor-pointer"
@@ -129,7 +136,8 @@
             <nav v-if="meta.total > items.length">
                 <ul class="pagination float-end">
                     <li class="page-item" :class="{ active: link.active }" v-for="link in meta.links">
-                        <a class="page-link" v-on:click="paginate" v-bind:href="link.url"><span v-html="link.label"></span></a>
+                        <a class="page-link" v-on:click="paginate" v-bind:href="link.url"><span
+                            v-html="link.label"></span></a>
                     </li>
                 </ul>
             </nav>
@@ -157,7 +165,7 @@ import TooltipSlot from './slots/TooltipSlot.vue';
 import ModalSlot from './slots/ModalSlot.vue';
 
 export default {
-    name:"Items",
+    name: "Items",
     components: {
         SortUp,
         SortDown,
@@ -183,22 +191,22 @@ export default {
         }
     },
     watch: {
-        name: function(val) {
+        name: function (val) {
             this.name = val;
             this.clearCurrentPage();
             this.getItems();
         },
-        category: function(val) {
+        category: function (val) {
             this.category = val;
             this.clearCurrentPage();
             this.getItems();
         },
-        address: function(val) {
+        address: function (val) {
             this.address = val;
             this.clearCurrentPage();
             this.getItems();
         },
-        is_active: function(val) {
+        is_active: function (val) {
             this.is_active = val;
             this.clearCurrentPage();
             this.getItems();
@@ -206,13 +214,13 @@ export default {
     },
     created() {
         this.getItems();
-        this.getCategoris();
+        this.getCategories();
     },
     mounted() {
         //
     },
     methods: {
-        getCategoris() {
+        getCategories() {
             //
             axios.get('/api/categories')
                 .then(response => {
@@ -283,7 +291,7 @@ export default {
         sorting(sort_attr) {
             this.sort_attr = sort_attr;
 
-            if (this.sort_dir == 'desc') {
+            if (this.sort_dir === 'desc') {
                 this.sort_dir = 'asc';
             } else {
                 this.sort_dir = 'desc';
