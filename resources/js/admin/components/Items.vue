@@ -172,7 +172,6 @@ export default {
         TooltipSlot,
         ModalSlot,
     },
-    // Variables
     data() {
         return {
             itemId: null,
@@ -234,6 +233,7 @@ export default {
             this.page = null;
         },
         getItems() {
+            //
             var url = this.endpoint + '?';
 
             if (this.page) {

@@ -2,7 +2,7 @@
 <html lang="{{ $lang }}">
     <head>
         @include('include.head')
-        <link href="{{ Vite::asset('resources/css/admin/general.scss') }}" rel="stylesheet" />
+        @vite('resources/css/admin/general.scss')
     </head>
     <body>
         @include('include.navbar')
@@ -15,7 +15,7 @@
                 @include('include.footer')
             </div>
         </div>
-        <script src="{{ Vite::asset('resources/js/app.js') }}"></script>
+        @vite('resources/js/app.js')
         @stack('scripts')
     </body>
 </html>
