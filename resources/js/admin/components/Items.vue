@@ -8,7 +8,7 @@
             <button type="button" class="btn btn-sm btn-success"
                     data-bs-toggle="modal"
                     data-bs-target="#formModal"
-                    v-on:click="addItem">
+                    @click="addItem">
                 <i class="bi bi-plus-circle-fill me-2"></i> Add a new item
             </button>
         </div>
@@ -18,7 +18,7 @@
     <div class="row mb-3">
 
         <div class="col-md-2">
-            <input type="text" @change="changeName" name="name" id="name" class="form-control" placeholder="Name">
+            <input type="text" @keyup="changeName" name="name" id="name" class="form-control" placeholder="Name">
         </div>
 
         <div class="col-md-2">
@@ -29,7 +29,7 @@
         </div>
 
         <div class="col-md-2">
-            <input type="text" @change="changeAddress" name="address" id="address" class="form-control" placeholder="Address">
+            <input type="text" @keyup="changeAddress" name="address" id="address" class="form-control" placeholder="Address">
         </div>
 
         <div class="col-md-2">
@@ -38,12 +38,6 @@
                 <option value="1">Yes</option>
                 <option value="0">No</option>
             </select>
-        </div>
-
-        <div class="col-md-2">
-            <button type="button" id="clearFilters" class="btn btn-outline-secondary" v-on:click="clearFilters">
-                <i class="bi bi-x-circle me-2"></i> Clear Filters
-            </button>
         </div>
 
     </div>
@@ -118,9 +112,9 @@
                 <td><i class="bi bi-pencil-square text-success cursor-pointer"
                        data-bs-toggle="modal"
                        data-bs-target="#formModal"
-                       v-on:click="editItem(item.id)"></i></td>
+                       @click="editItem(item.id)"></i></td>
                 <td><i class="bi bi-trash text-danger cursor-pointer"
-                       v-on:click="deleteItem(item.id)"></i></td>
+                       @click="deleteItem(item.id)"></i></td>
             </tr>
             </tbody>
         </table>
@@ -298,13 +292,6 @@ export default {
             }
 
             this.getItems();
-        },
-        clearFilters(event) {
-            this.page = null;
-            this.name = null;
-            this.address = null;
-            this.category = '';
-            this.is_active = '';
         },
         addItem() {
             this.itemId = null;

@@ -1,5 +1,5 @@
 <template>
-    <div class="modal fade" id="formModal" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="formModal" tabindex="-1" aria-hidden="true" v-if="isMountedComponent">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -55,7 +55,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-sm btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-sm  btn-success" v-on:click="saveItem">{{ title }}</button>
+                    <button type="button" class="btn btn-sm  btn-success" @click="saveItem">{{ title }}</button>
                 </div>
             </div>
         </div>
@@ -73,6 +73,7 @@ function initialState() {
         formModalDescription: null,
         formModalNotice: null,
         formModalIsActive: true,
+        isMountedComponent: false
     }
 }
 
@@ -104,7 +105,7 @@ export default {
         this.switchForm(this.itemId);
     },
     mounted () {
-        //
+        this.isMountedComponent = true;
     },
     methods: {
         switchForm(id) {
@@ -128,7 +129,7 @@ export default {
                         this.formModalAddress = item.address;
                         this.formModalDescription = item.description;
                         this.formModalNotice = item.notice;
-                        this.formModalIsActive = item.is_active ? true : false;
+                        this.formModalIsActive = !!item.is_active;
                     })
                     .catch(function (error) {
                         console.error(error);
@@ -149,9 +150,9 @@ export default {
                 // Reset Data
                 Object.assign(this.$data, initialState());
             })
-                .catch((error) => {
-                    this.errors = error.response.data.errors;
-                });
+            .catch((error) => {
+                this.errors = error.response.data.errors;
+            });
         },
         updateItem() {
             axios.put('/api/items/' + this.itemId, this.getFormData()).then((response) => {
