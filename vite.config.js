@@ -15,7 +15,8 @@ export default defineConfig({
             refresh: true
         }),
         vue({
-            reactivityTransform: false
+            reactivityTransform: false,
+            defineModel: true
         })
     ],
     build: {

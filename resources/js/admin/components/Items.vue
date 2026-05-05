@@ -18,22 +18,22 @@
     <div class="row mb-3">
 
         <div class="col-md-2">
-            <input type="text" v-model="name" name="name" id="name" class="form-control" placeholder="Name">
+            <input type="text" @change="changeName" name="name" id="name" class="form-control" placeholder="Name">
         </div>
 
         <div class="col-md-2">
-            <select v-model="category" name="category" id="category" class="form-select">
+            <select @change="changeCategory" name="category" id="category" class="form-select">
                 <option value="">Categories</option>
                 <option v-for="(item, index) in categories" v-bind:value="index">{{ item }}</option>
             </select>
         </div>
 
         <div class="col-md-2">
-            <input type="text" v-model="address" name="address" id="address" class="form-control" placeholder="Address">
+            <input type="text" @change="changeAddress" name="address" id="address" class="form-control" placeholder="Address">
         </div>
 
         <div class="col-md-2">
-            <select v-model="is_active" name="is_active" id="is_active" class="form-select">
+            <select @change="changeIsActive" name="is_active" id="is_active" class="form-select">
                 <option value="">Activity</option>
                 <option value="1">Yes</option>
                 <option value="0">No</option>
@@ -163,8 +163,10 @@ import SortUp from './slots/SortUp.vue';
 import SortDown from './slots/SortDown.vue';
 import TooltipSlot from './slots/TooltipSlot.vue';
 import ModalSlot from './slots/ModalSlot.vue';
+import axios from 'axios';
 
 export default {
+    el: '#app',
     name: "Items",
     components: {
         SortUp,
@@ -189,28 +191,6 @@ export default {
             is_active: '',
         }
     },
-    watch: {
-        name: function (val) {
-            this.name = val;
-            this.clearCurrentPage();
-            this.getItems();
-        },
-        category: function (val) {
-            this.category = val;
-            this.clearCurrentPage();
-            this.getItems();
-        },
-        address: function (val) {
-            this.address = val;
-            this.clearCurrentPage();
-            this.getItems();
-        },
-        is_active: function (val) {
-            this.is_active = val;
-            this.clearCurrentPage();
-            this.getItems();
-        },
-    },
     created() {
         this.getItems();
         this.getCategories();
@@ -219,6 +199,26 @@ export default {
         //
     },
     methods: {
+        changeName(event) {
+            this.name = event.target.value;
+            this.clearCurrentPage();
+            this.getItems();
+        },
+        changeCategory(event) {
+            this.category = event.target.value;
+            this.clearCurrentPage();
+            this.getItems();
+        },
+        changeAddress(event) {
+            this.address = event.target.value;
+            this.clearCurrentPage();
+            this.getItems();
+        },
+        changeIsActive: function (event) {
+            this.is_active =  event.target.value;
+            this.clearCurrentPage();
+            this.getItems();
+        },
         getCategories() {
             //
             axios.get('/api/categories')

@@ -4,4 +4,4 @@
 @endsection
 @push('scripts')
     @vite('resources/js/admin/items.js')
-@endpush
+@endpush('scripts')
